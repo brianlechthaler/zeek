@@ -4,7 +4,7 @@ FROM alpine:edge
 
 ## Environment Variables
 ENV PERMANENT_PKG openssl zlib bind bash python3 libpcap krb5 curl libmaxminddb
-ENV TEMPORARY_PKG cmake make gcc g++ swig bison flex-dev curl-dev krb5-dev zlib-dev libmaxminddb-dev openssl-dev python3-dev libpcap-dev bind-dev
+ENV TEMPORARY_PKG cmake make gcc g++ swig bison flex-dev curl-dev krb5-dev zlib-dev libmaxminddb-dev openssl-dev python3-dev libpcap-dev bind-dev cmake-extras
 
 ## Dependencies
 # Make Sure We're up-to-date
