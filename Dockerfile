@@ -12,8 +12,8 @@ RUN apt-get upgrade -y -qq
 
 # Install Permanent Packages
 RUN apt-get install -y -qq $PKG
-RUN sudo apt-get autoremove
-RUN sudo apt-get autoclean
+RUN apt-get autoremove
+RUN apt-get autoclean
 
 # Add the contents of this directory to /opt/zeekgit
 ADD . /opt/zeekgit/
