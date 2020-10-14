@@ -5,7 +5,6 @@ steps:
 options:
  machineType: 'N1_HIGHCPU_32'
  sourceProvenanceHash: ['SHA256']
- timeout: 1200
 images:
 - 'us.gcr.io/$PROJECT_ID/zeek:latest'
 
