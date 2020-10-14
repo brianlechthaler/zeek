@@ -3,7 +3,7 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'us.gcr.io/$PROJECT_ID/zeek:latest', '-f', 'Dockerfile', '--pull']
 options:
- machineType: 'N2_HIGHCPU_32'
+ machineType: 'N1_HIGHCPU_32'
  sourceProvenanceHash: ['SHA256']
  timeout: 1200
 images:
