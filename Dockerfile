@@ -12,10 +12,10 @@ RUN apk update
 RUN apk upgrade
 
 # Install Permanent Packages
-RUN apk add -y $PERMANENT_PKG
+RUN apk add $PERMANENT_PKG
 
 # Install Temporary (build-time) Packages
-RUN apk add -y $TEMPORARY_PKG
+RUN apk add $TEMPORARY_PKG
 
 # Add the contents of this directory to /opt/zeekgit
 ADD . /opt/zeekgit/
