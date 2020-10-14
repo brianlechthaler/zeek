@@ -1,21 +1,19 @@
 ## Source Image
 # Start from Alpine Edge
-FROM alpine:edge
+FROM debian:latest
 
 ## Environment Variables
-ENV PERMANENT_PKG openssl zlib bind bash python3 libpcap krb5 curl libmaxminddb
-ENV TEMPORARY_PKG cmake make gcc swig bison flex-dev curl-dev krb5-dev zlib-dev libmaxminddb-dev openssl-dev python3-dev libpcap-dev bind-dev
+ENV PKG cmake make gcc g++ flex bison libpcap-dev libssl-dev python-dev swig zlib1g-dev
 
 ## Dependencies
 # Make Sure We're up-to-date
-RUN apk update
-RUN apk upgrade
+RUN apt-get update -qq
+RUN apt-get upgrade -y -qq
 
 # Install Permanent Packages
-RUN apk add $PERMANENT_PKG
-
-# Install Temporary (build-time) Packages
-RUN apk add $TEMPORARY_PKG
+RUN apt-get install -y -qq $PKG
+RUN sudo apt-get autoremove
+RUN sudo apt-get autoclean
 
 # Add the contents of this directory to /opt/zeekgit
 ADD . /opt/zeekgit/
@@ -26,9 +24,7 @@ RUN cd /opt/zeekgit ; make -j $(nproc)
 RUN cd /opt/zeekgit ; make -j $(nproc) install
 
 ## Clean Up
-# Remove Temporary Packages
-RUN apk del --purge $TEMPORARY_PKG
-# Remove cache
+# Remove caches and build dirs
 RUN rm -rf /var/cache/*
 RUN rm -rf /tmp/*
 RUN rm -rf /root/*
